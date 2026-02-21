@@ -1,0 +1,9 @@
+{# @var dto \Wertelko\EasyadminContentBundle\Dto\ContentDto #}
+{% extends "@EasyAdmin/page/content.html.twig" %}
+
+{% block page_title %}{{ page_title ?? '' }}{% endblock %}
+{% block page_content %}
+    {% for dto in content %}
+        {% include dto.template with {dto: dto} %}
+    {% endfor %}
+{% endblock %}

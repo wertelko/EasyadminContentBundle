@@ -1,12 +1,12 @@
 {
-    "name": "wertelko/easyadmin-content",
+    "name": "wertelko/easyadmin-content-bundle",
     "description": "Simple bundle that allows displaying content in the EasyAdmin",
     "type": "bundle",
     "keywords": ["easyadmin", "symfony", "content"],
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Wertelko\\EasyadminContent\\": "src/"
+            "Wertelko\\EasyadminContentBundle\\": "src/"
         }
     },
     "authors": [
@@ -15,7 +15,7 @@
             "email": "example@example.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "easycorp/easyadmin-bundle": "^4.8"
     }

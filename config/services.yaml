@@ -1,0 +1,20 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    _instanceof:
+        Wertelko\EasyadminContentBundle\Content\Configurator\ContentConfiguratorInterface:
+            tags: ['ea_content.configurator']
+
+    Wertelko\EasyadminContentBundle\Factory\ContentFactory:
+        arguments:
+            $configurators: !tagged_iterator ea_content.configurator
+
+    Wertelko\EasyadminContentBundle\Content\Configurator\ContentConfigurator: ~
+    Wertelko\EasyadminContentBundle\Content\Configurator\TableContentConfigurator: ~
+    Wertelko\EasyadminContentBundle\Content\Configurator\FormContentConfigurator: ~
+    Wertelko\EasyadminContentBundle\Content\Configurator\HeadingContentConfigurator: ~
+    Wertelko\EasyadminContentBundle\Content\Configurator\ListContentConfigurator: ~
+

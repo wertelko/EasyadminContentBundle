@@ -1,0 +1,8 @@
+{# @var dto \Wertelko\EasyadminContentBundle\Dto\ContentDto #}
+
+{% set listType = dto.option('list_type', 'li') %}
+<{{ listType }}>
+{% for i in dto.content %}
+    <li>{{ i }}</li>
+{% endfor %}
+</{{ listType }}>

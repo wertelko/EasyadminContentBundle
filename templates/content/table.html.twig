@@ -1,0 +1,68 @@
+{# @var dto \Wertelko\EasyadminContentBundle\Dto\ContentDto #}
+
+<table class="table datagrid {{ dto.content is empty ? 'datagrid-empty' }}">
+    {% if dto.option('rows_count') > 0 %}
+        <thead>
+            <tr>
+                {% if dto.option('display_headers') %}
+                    {% for field in dto.option('headers', []) %}
+                        <th dir="{{ ea.i18n.textDirection }}">
+                            <span><b>{{ field }}</b></span>
+                        </th>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+        </thead>
+    {% endif %}
+
+    <tbody>
+    {% block table_body %}
+        {% for entity in dto.content %}
+            {% block table_body_row %}
+                    <tr data-id="table-row-{{ loop.index }}">
+                        {% for field in entity %}
+                            <td>
+                                {{ field }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+            {% endblock table_body_row %}
+        {% else %}
+            {% block table_body_empty %}
+                {% for i in 1..14 %}
+                    <tr class="empty-row">
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td><span></span></td>
+                    </tr>
+
+                    {% if 3 == loop.index %}
+                        <tr class="no-results">
+                            <td colspan="100">
+                                {{ t('datagrid.no_results', ea.i18n.translationParameters, 'EasyAdminBundle')|trans }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endblock table_body_empty %}
+        {% endfor %}
+    {% endblock table_body %}
+    </tbody>
+
+    <tfoot>
+    {% block table_footer %}
+    {% endblock table_footer %}
+    </tfoot>
+</table>
+
+{% if dto.option('rows_count') > 0 %}
+    <div class="list-pagination">
+        <div class="list-pagination-counter">
+
+            <strong>{{ 'paginator.results'|trans({'%count%': dto.option('rows_count')|format}, 'EasyAdminBundle')|raw }}</strong>
+        </div>
+    </div>
+{% endif %}
