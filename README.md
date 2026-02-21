@@ -5,6 +5,10 @@ build content programmatically.
 
 ![EasyadminContentBundle](docs/images/easyadmin-content.png)
 
+#### 0. Instalation
+
+`composer require wertelko/easyadmin-content-bundle`
+
 #### 1. Introduction
 
 The `EasyadminContentBundle` is designed to simplify the creation of structured content blocks within your Symfony
