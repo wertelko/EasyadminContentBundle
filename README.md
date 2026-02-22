@@ -267,4 +267,17 @@ class TestController extends AbstractController implements EasyadminContentContr
 }
 ```
 
-Go to the http://localhost:8000/admin?routeName=app_test
+Of course. Here is the English translation of the note:
+
+---
+
+### Important Note: Usage within the EasyAdmin Context
+
+This bundle is designed specifically to work inside **EasyAdmin**. The rendering mechanism, particularly the
+`renderContent` method from the `EasyAdminContentTrait`, is tightly coupled with the EasyAdmin architecture and context.
+
+Attempting to use `renderContent` in a standard Symfony controller outside of the EasyAdmin environment will not work,
+as the bundle relies on specific services and context variables that EasyAdmin provides during request processing.
+
+For the bundle to function correctly, all controllers implementing `EasyadminContentControllerInterface` must be
+accessed through EasyAdmin's routing system. For example: `http://localhost:8000/admin?routeName=app_test`.
