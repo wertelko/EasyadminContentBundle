@@ -4,13 +4,14 @@ namespace Wertelko\EasyadminContentBundle\Content;
 
 class TableContent extends Content
 {
+    const DEFAULT_TEMPLATE = '@EasyadminContent/content/table.html.twig';
+
     public function __construct(mixed $content = [])
     {
         $content ??= [];
         parent::__construct($content);
-        $this->disableHeaders(false);
-        $this->getDto()
-            ->setTemplate('@EasyadminContent/content/table.html.twig');
+        $this->disableHeaders(false)
+            ->setTemplate(self::DEFAULT_TEMPLATE);
     }
 
     public function disableHeaders(bool $headers = true): static

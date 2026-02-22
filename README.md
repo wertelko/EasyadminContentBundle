@@ -118,17 +118,48 @@ use Wertelko\EasyadminContentBundle\Content\FormContent;
 $formContent = FormContent::new($form);
 ```
 
-#### 4. Rendering in Twig
+#### 4. Customizing Content
 
-To render the content blocks, you would pass them to your Twig template and iterate over them, using a (hypothetical)
-custom Twig function like `render_content`.
+All content objects inherit from the base [`Content`](psi_element://Wertelko\EasyadminContentBundle\Content\Content)
+class, giving you access to powerful customization methods.
 
-```twig
-{# Assumes 'contents' is an array of Content objects #}
-{% for content in contents %}
-    {{ render_content(content) }}
-{% endfor %}
-```
+##### 4.1. Overriding Templates with `setTemplate()`
+
+Every content block is rendered using a default Twig template. The [
+`setTemplate()`](psi_element://Wertelko\EasyadminContentBundle\Content\Content#setTemplate) method allows you to specify
+a different template path for any content object, giving you full control over its HTML output.
+
+- **Usage**:
+  ```php
+  use Wertelko\EasyadminContentBundle\Content\ListContent;
+  
+  // Render this list using a custom Twig template
+  $list = ListContent::new(['item 1', 'item 2'])
+      ->setTemplate('partials/custom_bootstrap_list.html.twig');
+  ```
+
+##### 4.2. Passing Custom Data with `setOption()`
+
+The [`setOption()`](psi_element://Wertelko\EasyadminContentBundle\Content\Content#setOption) method provides a flexible
+way to pass custom data, flags, or configuration from your controller to your Twig templates. This is ideal for adding
+CSS classes, element IDs, or other display-related attributes.
+
+- **Usage**:
+  ```php
+  use Wertelko\EasyadminContentBundle\Content\TableContent;
+  
+  // Pass a custom CSS class to the table template
+  $table = TableContent::new($data)
+      ->setOption('table_id', 'my-table-id');
+  ```
+
+- **In your Twig template**, you can then access this option:
+  ```twig
+  {# Retrieve the option with a default fallback value #}
+  <table id="{{ dto.ption('table_id', 'table') }}">
+      {# ... table content ... #}
+  </table>
+  ```
 
 ---
 
