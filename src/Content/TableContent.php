@@ -10,14 +10,14 @@ class TableContent extends Content
     {
         $content ??= [];
         parent::__construct($content);
-        $this->disableHeaders(false)
+        $this->hideHeaders(false)
             ->setTemplate(self::DEFAULT_TEMPLATE);
     }
 
-    public function disableHeaders(bool $headers = true): static
+    public function hideHeaders(bool $hidden = true): static
     {
         $this->getDto()
-            ->setOption('display_headers', !$headers);
+            ->setOption('display_headers', !$hidden);
         return $this;
     }
 

@@ -99,11 +99,11 @@ $table = TableContent::new($data);
 // Creates a table without headers
 $tableNoHeaders = TableContent::new($data)
     ->setHeaders(['Product ID', 'Product', 'Price']) // Set custom headers
-    ->disableHeaders(); // Disable headers
+    ->hideHeaders(); // Disable headers
 ```
 
 - **Methods**: [
-  `disableHeaders(bool $disabled = true)`](psi_element://Wertelko\EasyadminContentBundle\Content\TableContent#disableHeaders).
+  `hideHeaders(bool $hidden = true)`](psi_element://Wertelko\EasyadminContentBundle\Content\TableContent#hideHeaders).
 
 ##### 3.4. `FormContent`
 
