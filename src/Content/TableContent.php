@@ -11,7 +11,14 @@ class TableContent extends Content
         $content ??= [];
         parent::__construct($content);
         $this->hideHeaders(false)
+            ->hideCounter(false)
             ->setTemplate(self::DEFAULT_TEMPLATE);
+    }
+
+    public function hideCounter(bool $hidden = true): static
+    {
+        $this->getDto()->setOption('display_counter', !$hidden);
+        return $this;
     }
 
     public function hideHeaders(bool $hidden = true): static

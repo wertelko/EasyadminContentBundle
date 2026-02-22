@@ -72,7 +72,7 @@
     </tfoot>
 </table>
 
-{% if dto.option('rows_count') > 0 %}
+{% if dto.option('rows_count') > 0 and dto.option('display_counter', true) %}
     <div class="list-pagination">
         <div class="list-pagination-counter">
 
