@@ -156,7 +156,7 @@ CSS classes, element IDs, or other display-related attributes.
 - **In your Twig template**, you can then access this option:
   ```twig
   {# Retrieve the option with a default fallback value #}
-  <table id="{{ dto.ption('table_id', 'table') }}">
+  <table id="{{ dto.option('table_id', 'table') }}">
       {# ... table content ... #}
   </table>
   ```
