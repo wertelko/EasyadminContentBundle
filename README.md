@@ -7,7 +7,9 @@ build content programmatically.
 
 #### 0. Instalation
 
-`composer require wertelko/easyadmin-content-bundle`
+```
+composer require wertelko/easyadmin-content-bundle
+```
 
 #### 1. Introduction
 
