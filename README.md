@@ -99,11 +99,19 @@ $table = TableContent::new($data);
 // Creates a table without headers
 $tableNoHeaders = TableContent::new($data)
     ->setHeaders(['Product ID', 'Product', 'Price']) // Set custom headers
-    ->hideHeaders(); // Disable headers
+    ->hideCounter() // Hide result counter
+    ->hideHeaders(); // Hide headers
 ```
 
-- **Methods**: [
-  `hideHeaders(bool $hidden = true)`](psi_element://Wertelko\EasyadminContentBundle\Content\TableContent#hideHeaders).
+- **Methods**:
+    - [`setHeaders(array $headers)`](psi_element://Wertelko\EasyadminContentBundle\Content\TableContent#setHeaders):
+      Sets custom headers for the table columns.
+    - [
+      `hideHeaders(bool $hidden = true)`](psi_element://Wertelko\EasyadminContentBundle\Content\TableContent#hideHeaders):
+      Hides the table header row.
+    - [
+      `hideCounter(bool $hidden = true)`](psi_element://Wertelko\EasyadminContentBundle\Content\TableContent#hideCounter):
+      Hides the results counter (e.g., "50 results").
 
 ##### 3.4. `FormContent`
 
@@ -266,8 +274,6 @@ class TestController extends AbstractController implements EasyadminContentContr
     }
 }
 ```
-
-Of course. Here is the English translation of the note:
 
 ---
 
