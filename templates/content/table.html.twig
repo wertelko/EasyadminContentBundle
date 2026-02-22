@@ -1,17 +1,31 @@
 {# @var dto \Wertelko\EasyadminContentBundle\Dto\ContentDto #}
 
+{% set dispalyHeaders = dto.option('display_headers', true) %}
+
+{% if not dispalyHeaders %}
+    <style>
+        td {
+            padding-inline-start: 8px !important;
+        }
+
+        td::before {
+            display: none;
+        }
+    </style>
+{% endif %}
+
 <table class="table datagrid {{ dto.content is empty ? 'datagrid-empty' }}">
     {% if dto.option('rows_count') > 0 %}
         <thead>
-            <tr>
-                {% if dto.option('display_headers') %}
-                    {% for field in dto.option('headers', []) %}
-                        <th dir="{{ ea.i18n.textDirection }}">
-                            <span><b>{{ field }}</b></span>
-                        </th>
-                    {% endfor %}
-                {% endif %}
-            </tr>
+        <tr>
+            {% if dispalyHeaders %}
+                {% for field in dto.option('headers', []) %}
+                    <th dir="{{ ea.i18n.textDirection }}">
+                        <span><b>{{ field }}</b></span>
+                    </th>
+                {% endfor %}
+            {% endif %}
+        </tr>
         </thead>
     {% endif %}
 
@@ -19,13 +33,13 @@
     {% block table_body %}
         {% for entity in dto.content %}
             {% block table_body_row %}
-                    <tr data-id="table-row-{{ loop.index }}">
-                        {% for field in entity %}
-                            <td>
-                                {{ field }}
-                            </td>
-                        {% endfor %}
-                    </tr>
+                <tr id="table-row-{{ loop.index }}">
+                    {% for field in entity %}
+                        <td data-label="{{ field|trans|e('html') }}">
+                            {{ field }}
+                        </td>
+                    {% endfor %}
+                </tr>
             {% endblock table_body_row %}
         {% else %}
             {% block table_body_empty %}
