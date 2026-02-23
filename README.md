@@ -266,7 +266,7 @@ class TestController extends AbstractController implements EasyadminContentContr
 
         // 4. Add a Symfony form
         $contents[] = HeadingContent::new('Sample Form')->asH2();
-        $form = $formFactory->create(AiPromptType::class);
+        $form = $formFactory->create(TaskType::class);
         $contents[] = FormContent::new($form);
 
 
