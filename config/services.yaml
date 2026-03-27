@@ -6,7 +6,7 @@ services:
 
     _instanceof:
         Wertelko\EasyadminContentBundle\Content\Configurator\ContentConfiguratorInterface:
-            tags: ['ea_content.configurator']
+            tags: [ 'ea_content.configurator' ]
 
     Wertelko\EasyadminContentBundle\Factory\ContentFactory:
         arguments:
@@ -17,4 +17,5 @@ services:
     Wertelko\EasyadminContentBundle\Content\Configurator\FormContentConfigurator: ~
     Wertelko\EasyadminContentBundle\Content\Configurator\HeadingContentConfigurator: ~
     Wertelko\EasyadminContentBundle\Content\Configurator\ListContentConfigurator: ~
+    Wertelko\EasyadminContentBundle\Content\Configurator\CodeContentConfigurator: ~
 
